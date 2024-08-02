@@ -1,7 +1,9 @@
 rootProject.name = "stock-service"
 
 include(
-    "bootstrap"
+    "bootstrap",
+    "support:msa-core",
+    "support:monitor"
 )
 
 pluginManagement {
