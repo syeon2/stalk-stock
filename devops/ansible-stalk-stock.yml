@@ -1,0 +1,21 @@
+- hosts: stalk-stock
+  become: true
+
+  tasks:
+    - name: stop the cloud stock container
+      command: docker stop stalk-stock
+      ignore_errors: yes
+
+    - name: remove the cloud stock container
+      command: docker rm stalk-stock
+      ignore_errors: yes
+
+    - name: remove the cloud stock docker image
+      command: docker rmi waterkite94/stalk-stock
+      ignore_errors: yes
+
+    - name: pull the cloud stock image from docker hub
+      command: docker pull waterkite94/stalk-stock
+
+    - name: execute cloud stock container
+      command: docker run -d --name stalk-stock --network stalk-network waterkite94/stalk-stock
